@@ -11,7 +11,7 @@ function Start(){
             <Formulario type='password'required placeholder="Senha"></Formulario>
         </Form>
         <Botao>ENTRAR</Botao>
-        <Link to='/sign-up'>Não possuí uma conta? Cadastre-se</Link>
+        <Link to='/subscriptions'>Não possuí uma conta? Cadastre-se</Link>
         </Container>
     );
 }

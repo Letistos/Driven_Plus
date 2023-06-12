@@ -1,11 +1,11 @@
-import teste from '../assets/teste.jpg'
+import Planos from "../components/Planos";
 
 
 function Subscriptions(){
     return(
-    <>
-    <img src={teste}/>
-    </>
+    
+    <Planos/>
+    
     );
 }
 export default Subscriptions;
