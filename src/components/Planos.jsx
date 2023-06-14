@@ -1,4 +1,6 @@
 import styled from 'styled-components'
+import axios from 'axios'
+
 import dados from './Plano'
 import branco from '../assets/LogoBranca.png'
 import amarelo from '../assets/LogoAmarela.png'
@@ -7,6 +9,17 @@ import verde from '../assets/LogoVerde.png'
 function Planos(){
 
     const logos=[branco,amarelo,verde];    
+    // const config = {
+    //     headers: { Authorization: `Bearer ${5MH3GBE7JWFZU8b8ft1wY2FM}` }
+    // };
+    // const URL = 'https://mock-api.driven.com.br/api/v4/driven-plus/subscriptions/memberships';
+    // const promise = axios.get(URL, { headers })
+    // promise.then( (response) => {
+    //     console.log(response.data)
+    // });
+    // promise.catch((error) => {
+    //     console.log('deu ruim')
+    // });
 
     return (
         <Container>
@@ -54,7 +67,7 @@ const Container = styled.ul`
     flex-direction:column;
     justify-content:space-between;
     align-items:center;
-    margin-top:10px;
+    margin-top:5px;
     
 `
 const Titulo = styled.p`

@@ -6,7 +6,7 @@ import Signup from './pages/Sign-up'
 import Subscriptions from "./pages/Subscriptions";
 
 function App() {
-  axios.defaults.headers.common['Authorization'] = '5MH3GBE7JWFZU8b8ft1wY2FM'
+  axios.defaults.headers.common['Authorization'] = 'YtNnFhNmq3OEh0fMKbiiPrYD'
   return (
     
     <Body>
