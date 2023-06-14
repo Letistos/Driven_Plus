@@ -3,16 +3,18 @@ import logo from '../assets/logo.png'
 import { Link , useNavigate} from "react-router-dom";
 import {Container,Formulario,Botao,Form,Image} from '../styles/Styled start'
 import axios from "axios";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import UserContext from '../UserContext';
 
 function Start(){
     const[mail,setMail]=useState("");
     const[pwd,setPwd]=useState("")
+    const { setAndPersistToken } = useContext(UserContext);
+    
+    
 
     const navigate = useNavigate();
 
-    localStorage.setItem("mail", `${mail}`);
-    localStorage.setItem("pwd", `${pwd}`);
 
     function signIn(e){
         e.preventDefault();
@@ -25,13 +27,14 @@ function Start(){
         const promise = axios.post(URL,obj)
         promise.then( response => {
             console.log(response.data)
-            if(response.data.membership === null){
-                navigate('/subscriptions')
 
-                const mail = localStorage.getItem("mail");
-                console.log(mail);
-                const pwd = localStorage.getItem("pwd");
-                console.log(pwd);
+            setAndPersistToken(response.data.token)
+
+            const dados = JSON.stringify(response.data);
+            localStorage.setItem("usuario",dados);    
+
+            if(response.data.membership === null){
+                navigate('/subscriptions')               
             }
             if(response.data.membership !== null){
                 navigate('/home')

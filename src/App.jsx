@@ -1,15 +1,30 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState } from "react";
 import axios from 'axios';
 import styled from "styled-components";
 import Start from './components/Start'
 import Signup from './pages/Sign-up'
 import Subscriptions from "./pages/Subscriptions";
 import Home from "./pages/Home";
+import UserContext from './UserContext';
+
+
 function App() {
-  axios.defaults.headers.common['Authorization'] = 'YtNnFhNmq3OEh0fMKbiiPrYD'
+  axios.defaults.headers.common['Authorization'] = 'YtNnFhNmq3OEh0fMKbiiPrYD'  
+
+  const [token, setToken] = useState(null);
+  
+  
+  function setAndPersistToken(token) {
+		setToken(token);
+		localStorage.setItem("token", token);
+	}
+
+
   return (
     
     <Body>
+      <UserContext.Provider value={{token, setToken,setAndPersistToken}}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Start />}></Route>
@@ -18,6 +33,7 @@ function App() {
           <Route path="/home" element={<Home />}></Route>
         </Routes>
       </BrowserRouter>
+      </UserContext.Provider>
     </Body>
 
   )
