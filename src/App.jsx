@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Start from './components/Start'
 import Signup from './pages/Sign-up'
 import Subscriptions from "./pages/Subscriptions";
-
+import Home from "./pages/Home";
 function App() {
   axios.defaults.headers.common['Authorization'] = 'YtNnFhNmq3OEh0fMKbiiPrYD'
   return (
@@ -15,6 +15,7 @@ function App() {
           <Route path="/" element={<Start />}></Route>
           <Route path="/sign-up" element={<Signup />}></Route>
           <Route path="/subscriptions" element={<Subscriptions />}></Route>
+          <Route path="/home" element={<Home />}></Route>
         </Routes>
       </BrowserRouter>
     </Body>

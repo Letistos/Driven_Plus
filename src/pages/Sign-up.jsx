@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link , useNavigate} from "react-router-dom";
 import styled from "styled-components";
 import {Container, Formulario,Botao,Form,Image} from '../styles/Styled sign-up'
 import axios from "axios";
@@ -11,6 +11,10 @@ function Signup(){
     const[email,setEmail]=useState("");
     const[password,setPwd]=useState("");
 
+    const navigate = useNavigate();
+
+  
+
     function signUp(e){
         e.preventDefault();
         console.log(name);
@@ -22,8 +26,10 @@ function Signup(){
         const obj = {email,name,cpf,password};
     
         const promise = axios.post(URL,obj)
-        promise.then( response => {
-            console.log(response)
+        promise.then( resposta => {
+
+            navigate('/')
+          
         });
         promise.catch(error => {
             console.log('deu ruim')

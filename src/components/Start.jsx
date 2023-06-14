@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import logo from '../assets/logo.png'
-import { Link } from "react-router-dom";
+import { Link , useNavigate} from "react-router-dom";
 import {Container,Formulario,Botao,Form,Image} from '../styles/Styled start'
 import axios from "axios";
 import { useState } from "react";
@@ -8,6 +8,11 @@ import { useState } from "react";
 function Start(){
     const[mail,setMail]=useState("");
     const[pwd,setPwd]=useState("")
+
+    const navigate = useNavigate();
+
+    localStorage.setItem("mail", `${mail}`);
+    localStorage.setItem("pwd", `${pwd}`);
 
     function signIn(e){
         e.preventDefault();
@@ -19,11 +24,22 @@ function Start(){
     
         const promise = axios.post(URL,obj)
         promise.then( response => {
-            console.log('deu bom')
+            console.log(response.data)
+            if(response.data.membership === null){
+                navigate('/subscriptions')
+
+                const mail = localStorage.getItem("mail");
+                console.log(mail);
+                const pwd = localStorage.getItem("pwd");
+                console.log(pwd);
+            }
+            if(response.data.membership !== null){
+                navigate('/home')
+            }
         });
         promise.catch(error => {
-            console.log('deu ruim')
-            console.log(error.response)
+            alert(error.response.data.message)
+            
         });
 
        
