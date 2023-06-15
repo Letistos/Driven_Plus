@@ -14,7 +14,12 @@ function App() {
   axios.defaults.headers.common['Authorization'] = 'YtNnFhNmq3OEh0fMKbiiPrYD'  
 
   const [token, setToken] = useState(null);
+  const [membership, setMembership] = useState(null);
   
+  function setAndPersistMembership(membership) {
+		setMembership(membership);
+		localStorage.setItem("membership", membership);
+	}
   
   function setAndPersistToken(token) {
 		setToken(token);
@@ -25,7 +30,7 @@ function App() {
   return (
     
     <Body>
-      <UserContext.Provider value={{token, setToken,setAndPersistToken}}>
+      <UserContext.Provider value={{token, setToken,setAndPersistToken,membership, setMembership,setAndPersistMembership}}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Start />}></Route>
@@ -41,7 +46,7 @@ function App() {
   )
 }
 
-export default App
+export default App;
 
 const Body = styled.div`
   display:flex;

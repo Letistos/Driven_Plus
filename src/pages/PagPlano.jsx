@@ -4,11 +4,13 @@ import seta from '../assets/Vector.png'
 import beneficios from '../assets/beneficios.png'
 import dinheiro from '../assets/dinheiro.png'
 import { Link, useParams, useNavigate } from "react-router-dom";
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
+import UserContext from "../UserContext";
 import axios from "axios";
 
 
 function PagPlano(){
+    const { setAndPersistMembership } = useContext(UserContext);
 
     const parametro = useParams();
 
@@ -45,7 +47,7 @@ function PagPlano(){
 
             navigate('/home')
 
-            console.log(resposta.data);
+            setAndPersistMembership(response.data.membership);
           
         });
         promise.catch(error => {
