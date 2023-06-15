@@ -10,7 +10,7 @@ import axios from "axios";
 
 
 function PagPlano(){
-    const { setAndPersistMembership } = useContext(UserContext);
+    const { setAndPersistMembership, token } = useContext(UserContext);
 
     const parametro = useParams();
 
@@ -33,7 +33,7 @@ function PagPlano(){
 
         const obj={membershipId,cardName,cardNumber,securityNumber,expirationDate }
 
-        const Pwd = localStorage.getItem("token");    
+        const Pwd = token;    
         const Config = {
         headers: { Authorization:`Bearer ${Pwd}`}
         };
@@ -47,7 +47,9 @@ function PagPlano(){
 
             navigate('/home')
 
-            setAndPersistMembership(response.data.membership);
+            setAndPersistMembership(resposta.data.membership);
+
+            console.log(resposta.data)
           
         });
         promise.catch(error => {

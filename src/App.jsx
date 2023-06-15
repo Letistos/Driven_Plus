@@ -1,11 +1,11 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useState } from 'react';
 import axios from 'axios';
-import styled from "styled-components";
+import styled from 'styled-components';
 import Start from './components/Start'
 import Signup from './pages/Sign-up'
-import Subscriptions from "./pages/Subscriptions";
-import Home from "./pages/Home";
+import Subscriptions from './pages/Subscriptions';
+import Home from './pages/Home';
 import UserContext from './UserContext';
 import PagPlano from './pages/PagPlano';
 
@@ -13,17 +13,18 @@ import PagPlano from './pages/PagPlano';
 function App() {
   axios.defaults.headers.common['Authorization'] = 'YtNnFhNmq3OEh0fMKbiiPrYD'  
 
-  const [token, setToken] = useState(null);
+  const [token, setToken] = useState(localStorage.getItem('token'));
   const [membership, setMembership] = useState(null);
   
-  function setAndPersistMembership(membership) {
-		setMembership(membership);
-		localStorage.setItem("membership", membership);
+  function setAndPersistMembership(member) {
+		setMembership(member);
+		localStorage.setItem('membership', member);
+    console.log(member);
 	}
   
   function setAndPersistToken(token) {
 		setToken(token);
-		localStorage.setItem("token", token);
+		localStorage.setItem('token', token);
 	}
 
 
