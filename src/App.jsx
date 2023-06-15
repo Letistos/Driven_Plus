@@ -7,6 +7,7 @@ import Signup from './pages/Sign-up'
 import Subscriptions from "./pages/Subscriptions";
 import Home from "./pages/Home";
 import UserContext from './UserContext';
+import PagPlano from './pages/PagPlano';
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
           <Route path="/" element={<Start />}></Route>
           <Route path="/sign-up" element={<Signup />}></Route>
           <Route path="/subscriptions" element={<Subscriptions />}></Route>
+          <Route path="/subscriptions/:idPlano" element={<PagPlano />}></Route>
           <Route path="/home" element={<Home />}></Route>
         </Routes>
       </BrowserRouter>

@@ -2,13 +2,15 @@ import styled from 'styled-components'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import {Box,Container,Titulo} from '../styles/Styled Planos'
+import { Link , useNavigate} from "react-router-dom";
 
 
 function Planos(){
 
     const [planos,setPlanos] = useState([]);
 
-   
+    const [ident,setId] = useState("");
+    const navigate = useNavigate();
 
     useEffect(() =>{
         
@@ -31,6 +33,9 @@ function Planos(){
 
     }, []);
 
+    
+    
+
 
     return (
         <Container>
@@ -38,10 +43,12 @@ function Planos(){
             {planos.map((opcao) => (
 
                 <li key={opcao.id}>
+                    <Link to={`/subscriptions/${opcao.id}`}>
                     <Box>
                         <img src={opcao.image} alt="logo plano driven plus" />
                         <p>{opcao.price}</p>
                     </Box>
+                    </Link>
                 </li>
             ))
             };
